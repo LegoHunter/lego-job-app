@@ -13,7 +13,7 @@ on:
 env:
   TAG_NAME: latest
   NAMESPACE: sandbox
-  APP_NAME: lego-data-service
+  APP_NAME: lego-sandbox-application
 
 jobs:
   build-test-deploy:
@@ -111,5 +111,5 @@ jobs:
     steps:
       - name: Deploy on Kubernetes cluster
         run: |
-          kubectl set image deployment/${{env.APP_NAME}}-deployment ${{env.APP_NAME}}-deployment=quay.io/tvattima/${{env.APP_NAME}}:${{env.TAG_NAME}} --namespace=${{env.NAMESPACE}}
-          kubectl rollout restart deployment/${{env.APP_NAME}}-deployment --namespace=${{env.NAMESPACE}}
+          kubectl set image cronjob/${{env.APP_NAME}}-cronjob ${{env.APP_NAME}}-cronjob=quay.io/tvattima/${{env.APP_NAME}}:${{env.TAG_NAME}} --namespace=${{env.NAMESPACE}}
+          kubectl rollout restart cronjob/${{env.APP_NAME}}-cronjob --namespace=${{env.NAMESPACE}}
