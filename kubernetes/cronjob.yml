@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: CronJob
+metadata:
+  name: lego-sandbox-application-cronjob
+  labels:
+    app: lego-sandbox-application-cronjob
+spec:
+  schedule: "* * * * *"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lego-sandbox-application-cronjob
+  jobTemplate:
+    metadata:
+      name: lego-sandbox-application-cronjob
+      labels:
+        app: lego-sandbox-application-cronjob
+    spec:
+      containers:
+        - name: lego-sandbox-application-cronjob
+          image: quay.io/tvattima/lego-sandbox-application:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILE_ACTIVE
+              value: "sandbox,kubernetes"
+          volumeMounts:
+            - name: database-volume
+              mountPath: /etc/.credentials/database
+      volumes:
+        - name: database-volume
+          projected:
+            sources:
+              - secret:
+                  name: database-configuration
+      restartPolicy: Always
