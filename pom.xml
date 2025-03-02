@@ -11,8 +11,8 @@
 	<groupId>net.legohunter</groupId>
 	<artifactId>lego-sandbox-app</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>Lego :: Sandbox Cronjob Application</name>
-	<description>Deployable Kubernetes Application</description>
+	<name>Lego :: Job Application</name>
+	<description>Executes batch Lego Jobs</description>
 
 	<distributionManagement>
 		<repository>

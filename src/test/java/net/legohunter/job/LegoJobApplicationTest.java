@@ -1,10 +1,10 @@
-package net.legohunter.sandbox;
+package net.legohunter.job;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SandboxAppApplicationTest {
+class LegoJobApplicationTest {
 
 	@Test
 	void contextLoads() {

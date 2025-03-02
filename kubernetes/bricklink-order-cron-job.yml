@@ -26,7 +26,7 @@ spec:
                 - containerPort: 8080
                   protocol: TCP
               env:
-                - name: SPRING_PROFILE_ACTIVE
+                - name: SPRING_PROFILES_ACTIVE
                   value: "sandbox,kubernetes,bricklink-order-job"
               volumeMounts:
                 - name: database-volume

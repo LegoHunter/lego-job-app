@@ -1,4 +1,4 @@
-package net.legohunter.sandbox;
+package net.legohunter.job.command;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

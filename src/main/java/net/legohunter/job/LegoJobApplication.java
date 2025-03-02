@@ -1,13 +1,13 @@
-package net.legohunter.sandbox;
+package net.legohunter.job;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SandboxAppApplication {
+public class LegoJobApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SandboxAppApplication.class, args);
+		SpringApplication.run(LegoJobApplication.class, args);
 	}
 
 }

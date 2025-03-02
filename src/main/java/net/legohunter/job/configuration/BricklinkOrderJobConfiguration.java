@@ -1,5 +1,6 @@
-package net.legohunter.sandbox;
+package net.legohunter.job.configuration;
 
+import net.legohunter.job.command.BricklinkOrderCommand;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
