@@ -5,7 +5,7 @@ metadata:
   labels:
     app: bricklink-order-cronjob
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "0 */4 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 10
