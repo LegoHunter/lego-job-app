@@ -1,4 +1,7 @@
 spring:
   application:
-    name:
-      sandbox-app
+    name: sandbox-app
+
+logging:
+  level:
+    root: info
