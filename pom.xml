@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.2</version>
+		<version>3.5.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>net.legohunter</groupId>
@@ -71,6 +71,29 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.openrewrite.maven</groupId>
+				<artifactId>rewrite-maven-plugin</artifactId>
+				<version>6.22.1</version>
+				<configuration>
+					<activeRecipes>
+						<recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_0</recipe>
+						<recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_1</recipe>
+						<recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_2</recipe>
+						<recipe>org.openrewrite.java.spring.boot3.SpringBootProperties_3_3</recipe>
+						<recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_3</recipe>
+						<recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_4</recipe>
+						<recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_5</recipe>
+					</activeRecipes>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.openrewrite.recipe</groupId>
+						<artifactId>rewrite-spring</artifactId>
+						<version>6.17.0</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
