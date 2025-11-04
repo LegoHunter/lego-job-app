@@ -102,9 +102,9 @@ jobs:
           echo "tag_name=${{env.TAG_NAME}}" >> "$GITHUB_OUTPUT"
           echo "namespace=${{env.NAMESPACE}}" >> "$GITHUB_OUTPUT"
 
-  deploy-to-legolandserver1:
+  deploy-to-legohunter-io:
     needs: build-test-deploy
-    runs-on: [ self-hosted, Linux, ARM64 ]
+    runs-on: [ arc-runner, Linux, ARM64 ]
     env:
       TAG_NAME: ${{needs.build-test-deploy.outputs.tag_name}}
       NAMESPACE: ${{needs.build-test-deploy.outputs.namespace}}
