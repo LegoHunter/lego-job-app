@@ -1,33 +1,33 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: lego-sandbox-application-cronjob
+  name: bricklink-price-calculator-cronjob
   labels:
-    app: lego-sandbox-application-cronjob
+    app: bricklink-price-calculator-cronjob
 spec:
-  schedule: "0 */4 * * *"
+  schedule: "0 2 */1 * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 10
   suspend: false
   jobTemplate:
     metadata:
-      name: lego-sandbox-application-cronjob
+      name: bricklink-price-calculator-cronjob
       labels:
-        app: lego-sandbox-application-cronjob
+        app: bricklink-price-calculator-cronjob
     spec:
       template:
         spec:
           containers:
-            - name: lego-sandbox-application-cronjob
+            - name: bricklink-price-calculator-cronjob
               image: quay.io/tvattima/lego-sandbox-application:latest
               imagePullPolicy: Always
               ports:
                 - containerPort: 8080
                   protocol: TCP
               env:
-                - name: SPRING_PROFILE_ACTIVE
-                  value: "sandbox,kubernetes,bricklink-order-job"
+                - name: SPRING_PROFILES_ACTIVE
+                  value: "sandbox,kubernetes,bricklink-price-calculator-job"
               volumeMounts:
                 - name: database-volume
                   mountPath: /etc/.credentials/database

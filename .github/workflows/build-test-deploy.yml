@@ -102,14 +102,16 @@ jobs:
           echo "tag_name=${{env.TAG_NAME}}" >> "$GITHUB_OUTPUT"
           echo "namespace=${{env.NAMESPACE}}" >> "$GITHUB_OUTPUT"
 
-  deploy-to-legolandserver1:
+  deploy-to-legohunter-io:
     needs: build-test-deploy
-    runs-on: [ self-hosted, Linux, ARM64 ]
+    runs-on: [ arc-runner, Linux, ARM64 ]
     env:
       TAG_NAME: ${{needs.build-test-deploy.outputs.tag_name}}
       NAMESPACE: ${{needs.build-test-deploy.outputs.namespace}}
     steps:
       - name: Deploy on Kubernetes cluster
         run: |
-          kubectl set image cronjob/${{env.APP_NAME}}-cronjob ${{env.APP_NAME}}-cronjob=quay.io/tvattima/${{env.APP_NAME}}:${{env.TAG_NAME}} --namespace=${{env.NAMESPACE}}
-          kubectl rollout restart cronjob/${{env.APP_NAME}}-cronjob --namespace=${{env.NAMESPACE}}
+          kubectl set image cronjob/bricklink-order-cronjob bricklink-order-cronjob=quay.io/tvattima/${{env.APP_NAME}}:${{env.TAG_NAME}} --namespace=${{env.NAMESPACE}}
+          kubectl rollout restart cronjob/bricklink-order-cronjob --namespace=${{env.NAMESPACE}}
+          kubectl set image cronjob/bricklink-price-calculator-cronjob bricklink-price-calculator-cronjob=quay.io/tvattima/${{env.APP_NAME}}:${{env.TAG_NAME}} --namespace=${{env.NAMESPACE}}
+          kubectl rollout restart cronjob/bricklink-price-calculator-cronjob --namespace=${{env.NAMESPACE}}
