@@ -1,6 +1,6 @@
 spring:
   datasource:
-    database-key-name: legolandserver1-lego-sandbox
+    database-key-name: rasppi5-01-lego-sandbox
   config:
     import: file:${import-path}/database/database-configuration.yml
 
